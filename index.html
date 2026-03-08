@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim Weber — Web Developer in Nanaimo, BC</title>
+<meta name="description" content="Professional web design and development for Nanaimo businesses. Fast, modern websites that bring in more customers.">
+<meta property="og:title" content="Kim Weber — Web Developer in Nanaimo, BC">
+<meta property="og:description" content="Fast, modern websites for Nanaimo businesses.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kimweberdev.vercel.app">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d5a3d'/><text x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-size='14' font-weight='bold' fill='white'>KW</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf9f6;
+    --warm: #f5f0e8;
+    --accent: #2d5a3d;
+    --accent-light: #3a7a52;
+    --accent-glow: #d4e8db;
+    --muted: #6b6b6b;
+    --border: #e0ddd6;
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(250, 249, 246, 0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--accent); }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 24px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+    animation: fadeInUp 0.8s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 24px;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease 0.1s both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.3s both;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    border: 2px solid var(--accent);
+  }
+  .btn-primary:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45, 90, 61, 0.2);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    padding: 14px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--accent);
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45, 90, 61, 0.2);
+  }
+
+  /* ---- DEVICE MOCKUP ---- */
+  .hero-mockup {
+    animation: fadeInUp 0.8s ease 0.4s both, heroFloat 6s ease-in-out infinite 1.2s;
+  }
+  .device-frame {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--border);
+  }
+  .device-bar {
+    background: #2c2c2c;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #222;
+  }
+  .device-dots {
+    display: flex;
+    gap: 5px;
+  }
+  .device-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .device-dots span:nth-child(1) { background: #ff5f57; }
+  .device-dots span:nth-child(2) { background: #febc2e; }
+  .device-dots span:nth-child(3) { background: #28c840; }
+  .device-url-bar {
+    flex: 1;
+    background: #444;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    color: #aaa;
+  }
+  .device-screen {
+    padding: 24px;
+  }
+  .mock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .mock-logo {
+    height: 8px;
+    width: 50px;
+    background: var(--accent);
+    border-radius: 4px;
+    opacity: 0.6;
+  }
+  .mock-nav-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .mock-nav-dot {
+    height: 6px;
+    width: 24px;
+    background: var(--border);
+    border-radius: 3px;
+  }
+  .mock-hero-area {
+    margin-bottom: 24px;
+    padding: 20px 0;
+  }
+  .mock-text-lg {
+    height: 12px;
+    width: 85%;
+    background: var(--ink);
+    border-radius: 3px;
+    margin-bottom: 8px;
+    opacity: 0.15;
+  }
+  .mock-text-lg-2 {
+    height: 12px;
+    width: 60%;
+    background: var(--ink);
+    border-radius: 3px;
+    margin-bottom: 12px;
+    opacity: 0.15;
+  }
+  .mock-text-sm {
+    height: 7px;
+    width: 70%;
+    background: var(--muted);
+    border-radius: 3px;
+    margin-bottom: 16px;
+    opacity: 0.15;
+  }
+  .mock-btn {
+    height: 20px;
+    width: 64px;
+    background: var(--accent);
+    border-radius: 10px;
+    opacity: 0.7;
+  }
+  .mock-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .mock-card {
+    height: 52px;
+    background: var(--accent-glow);
+    border-radius: 6px;
+  }
+
+  /* ---- SECTION SHARED ---- */
+  section { padding: 100px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    color: var(--muted);
+    max-width: 560px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* ---- SERVICES ---- */
+  .services { background: var(--warm); padding-bottom: 64px; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    border: 1px solid var(--border);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+    border-color: var(--accent-glow);
+  }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 1.3rem;
+  }
+  .service-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .service-price {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .service-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ---- WORK / PORTFOLIO ---- */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .work-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--warm);
+    transition: all 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+  }
+  .work-img {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+  .work-img img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .work-card:hover .work-img img {
+    transform: scale(1.05);
+  }
+  .work-coming-soon {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .work-info { padding: 24px; }
+  .work-info h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .work-type {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .work-info p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .work-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+  .work-info ul li {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+  .work-info ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ---- ABOUT ---- */
+  .about { background: var(--warm); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+  }
+  .about-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .about-content p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ---- PROCESS ---- */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    counter-reset: step;
+  }
+  .step {
+    counter-increment: step;
+    position: relative;
+  }
+  .step::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: rgba(45, 90, 61, 0.2);
+    line-height: 1;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .step h3 {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .step p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ---- CTA ---- */
+  .cta-section {
+    text-align: center;
+    background: var(--warm);
+  }
+  .cta-section .section-heading {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+  }
+  .cta-section .section-sub {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .contact-info h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-glow);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: var(--warm);
+    color: var(--ink);
+    transition: border 0.3s;
+    outline: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--accent);
+  }
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+  .contact-form button {
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    align-self: flex-start;
+  }
+  .contact-form button:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45, 90, 61, 0.2);
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .form-success.show {
+    display: block;
+  }
+  .form-success h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .form-success p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .form-success a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--accent);
+    cursor: pointer;
+  }
+  .contact-detail-icon i {
+    color: var(--accent);
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 60px 24px 32px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .footer-brand .nav-logo {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .footer-brand p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .footer-brand a.footer-link {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-brand a.footer-link:hover { color: var(--accent); }
+  .footer-nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .footer-nav a:hover { color: var(--ink); }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes navFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  nav {
+    animation: navFadeIn 0.6s ease both;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  /* ---- HAMBURGER ---- */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(250, 249, 246, 0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 16px 24px 24px;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 12px 0; }
+    .nav-links a { font-size: 1rem; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-mockup { display: none; }
+    .hero { min-height: auto; padding: 140px 24px 80px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-photo { max-width: 240px; aspect-ratio: 1; border-radius: 50%; margin: 0 auto; }
+    .about-photo img { object-position: center 20%; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-stats { gap: 24px; }
+    section { padding: 72px 20px; }
+    .footer-grid { flex-direction: column; gap: 24px; }
+  }
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .about-stats { flex-direction: column; gap: 16px; }
+    .hero h1 { font-size: 2.2rem; }
+  }
+</style>
+<script src="https://unpkg.com/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Kim Weber</a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Based in Nanaimo, BC</div>
+      <h1>Your business deserves a website that <em>actually works</em></h1>
+      <p class="hero-sub">I build fast, modern websites for Nanaimo businesses that look great, show up on Google, and turn visitors into customers.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get a Free Website Audit</a>
+        <a href="#work" class="btn-secondary">See My Work</a>
+      </div>
+    </div>
+    <div class="hero-mockup">
+      <div class="device-frame">
+        <div class="device-bar">
+          <div class="device-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="device-url-bar">yourbusiness.com</div>
+        </div>
+        <div class="device-screen">
+          <div class="mock-header">
+            <div class="mock-logo"></div>
+            <div class="mock-nav-dots">
+              <div class="mock-nav-dot"></div>
+              <div class="mock-nav-dot"></div>
+              <div class="mock-nav-dot"></div>
+            </div>
+          </div>
+          <div class="mock-hero-area">
+            <div class="mock-text-lg"></div>
+            <div class="mock-text-lg-2"></div>
+            <div class="mock-text-sm"></div>
+            <div class="mock-btn"></div>
+          </div>
+          <div class="mock-cards">
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">What I Do</div>
+    <h2 class="section-heading reveal">Websites that grow your business</h2>
+    <p class="section-sub reveal">Whether you need a brand new site or want to fix the one you have, I handle everything so you can focus on running your business.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><i data-lucide="monitor" style="width:24px;height:24px;color:var(--accent);stroke-width:1.5"></i></div>
+        <h3>New Website Build</h3>
+        <span class="service-price">Starting at $2,500</span>
+        <p>A complete, custom website designed for your business. Mobile-friendly, fast-loading, and built to bring in new customers through Google search.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i data-lucide="wrench" style="width:24px;height:24px;color:var(--accent);stroke-width:1.5"></i></div>
+        <h3>Website Rescue</h3>
+        <span class="service-price">Starting at $1,500</span>
+        <p>Already have a website that's slow, outdated, or not mobile-friendly? I'll audit what you have and rebuild it into something you're proud of.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i data-lucide="shield-check" style="width:24px;height:24px;color:var(--accent);stroke-width:1.5"></i></div>
+        <h3>Monthly Care Plan</h3>
+        <span class="service-price">$100 &ndash; $200/month</span>
+        <p>Security updates, backups, performance monitoring, and small content changes. Your site stays safe, fast, and up to date &mdash; without you lifting a finger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-label reveal">Recent Work</div>
+    <h2 class="section-heading reveal">Sites I've built for local businesses</h2>
+    <p class="section-sub reveal">A sample of sites I've built while at Array Studios. I handled all WordPress development — theme building, custom blocks, and integrations.</p>
+    <div class="work-grid">
+      <a class="work-card reveal" href="https://turnersurveys.ca/" target="_blank" rel="noopener noreferrer">
+        <div class="work-img">
+          <img src="turner.png" alt="Turner Surveys website screenshot">
+        </div>
+        <div class="work-info">
+          <h3>Turner Surveys</h3>
+          <span class="work-type">Built at Array Studios &middot; WordPress Development</span>
+          <ul>
+            <li>Custom Gutenberg blocks and SVG scroll animations</li>
+            <li>Video hero banner and custom project post type</li>
+            <li>Request-a-survey form integration</li>
+          </ul>
+        </div>
+      </a>
+      <a class="work-card reveal" href="https://lallifoundation.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-img">
+          <img src="lalli.png" alt="Lalli Foundation website screenshot">
+        </div>
+        <div class="work-info">
+          <h3>Lalli Foundation</h3>
+          <span class="work-type">Built at Array Studios &middot; WordPress Custom Theme</span>
+          <ul>
+            <li>Custom SVG decorative elements and textured sections</li>
+            <li>Video backgrounds and animated scroll effects</li>
+            <li>Donation integration and custom page templates</li>
+          </ul>
+        </div>
+      </a>
+      <a class="work-card reveal" href="https://ourhealthourcommunity.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-img">
+          <img src="ohoc.png" alt="Our Health Our Community website screenshot">
+        </div>
+        <div class="work-info">
+          <h3>Our Health Our Community</h3>
+          <span class="work-type">Built at Array Studios &middot; WordPress Development</span>
+          <ul>
+            <li>Interactive data visualizations and custom charting</li>
+            <li>WCAG accessibility implementation and compliance</li>
+            <li>Animated content sections and custom post types</li>
+          </ul>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="kim.jpeg" alt="Kim Weber standing on a coastal cliff with his Pomeranian">
+      </div>
+      <div class="about-content">
+        <div class="section-label reveal">About Me</div>
+        <h2 class="reveal">I'm Kim &mdash; a web developer who lives and works right here in Nanaimo</h2>
+        <p class="reveal">With four years of professional experience building websites at a marketing agency, I've worked on everything from simple business sites to complex web applications. I know WordPress inside and out, and I understand what makes a website actually perform for a small business.</p>
+        <p class="reveal">When you work with me, you're not getting a faceless agency or an overseas freelancer. You're getting a local developer who picks up the phone, meets for coffee, and genuinely cares about your business doing well &mdash; because when you do well, so does our community.</p>
+        <div class="about-stats reveal">
+          <div>
+            <span class="stat-num">4+</span>
+            <span class="stat-label">Years experience</span>
+          </div>
+          <div>
+            <span class="stat-num">30+</span>
+            <span class="stat-label">Websites built</span>
+          </div>
+          <div>
+            <span class="stat-num">Nanaimo</span>
+            <span class="stat-label">BC based</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="section-heading reveal">Simple, transparent, no surprises</h2>
+    <p class="section-sub reveal">I keep things straightforward. You'll always know what's happening and what's coming next.</p>
+    <div class="process-steps">
+      <div class="step reveal">
+        <h3>Free Consultation</h3>
+        <p>We meet (in person or video) to talk about your business, your goals, and what you need from a website. I'll give you an honest assessment &mdash; even if the answer is "you don't need me."</p>
+      </div>
+      <div class="step reveal">
+        <h3>Proposal &amp; Plan</h3>
+        <p>You get a clear written proposal with exactly what's included, how long it'll take, and what it costs. No hidden fees, no scope creep surprises.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Build &amp; Review</h3>
+        <p>I build your site and share progress along the way. You give feedback, I refine. Nothing goes live until you're happy with it.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Launch &amp; Support</h3>
+        <p>Your site goes live. I handle all the technical details &mdash; hosting, domain, SSL, email. And I'm here for ongoing support whenever you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Get Started</div>
+    <h2 class="section-heading reveal">Not sure where to start? I'll audit your website for free.</h2>
+    <p class="section-sub reveal">Send me your website URL and I'll put together an honest assessment of what's working, what's not, and what would make the biggest difference &mdash; no strings attached.</p>
+    <a href="#contact" class="btn-primary reveal">Request Your Free Audit</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-heading reveal">Let's talk about your website</h2>
+    <p class="section-sub reveal">Drop me a message or reach out directly. I respond to every inquiry within 24 hours.</p>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Get in touch</h3>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i data-lucide="mail" style="width:20px;height:20px;stroke-width:1.5"></i></div>
+          <span>kweber220@gmail.com</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i data-lucide="phone" style="width:20px;height:20px;stroke-width:1.5"></i></div>
+          <span>778-674-9307</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i data-lucide="map-pin" style="width:20px;height:20px;stroke-width:1.5"></i></div>
+          <span>Nanaimo, BC</span>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xkoqwozj" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry from kimweber.dev">
+        <input type="hidden" name="_next" value="https://kimweberdev.vercel.app/#contact">
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="e.g. Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email Address</label>
+          <input type="email" id="contact-email" name="email" placeholder="e.g. jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-website">Current Website URL <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
+          <input type="text" id="contact-website" name="website" placeholder="e.g. www.yourbusiness.com">
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" placeholder="Tell me about your business and what you're looking for..." required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="form-success" id="form-success">
+        <h3>Thanks! I'll be in touch within 24 hours.</h3>
+        <p>I appreciate you reaching out and will get back to you as soon as I can.</p>
+        <a id="form-reset">Send another message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Kim Weber</a>
+        <p>Web Developer &middot; Nanaimo, BC<br>
+        <a href="mailto:kweber220@gmail.com" class="footer-link">kweber220@gmail.com</a></p>
+      </div>
+      <div class="footer-nav">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/kim-weber-7b7b07361/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed &amp; built by Kim Weber with too much coffee &middot; &copy; 2026</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL REVEAL + SCROLL SPY -->
+<script>
+  // Entrance animations with stagger per container
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const parent = el.parentElement;
+        const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal'));
+        const idx = siblings.indexOf(el);
+        el.style.transitionDelay = `${idx * 100}ms`;
+        requestAnimationFrame(() => el.classList.add('visible'));
+        revealObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // Scroll spy for nav
+  const spySections = document.querySelectorAll('section[id]');
+  const spyLinks = document.querySelectorAll('.nav-links a');
+  function updateSpy() {
+    let current = '';
+    spySections.forEach(section => {
+      const top = section.offsetTop - 120;
+      if (scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    spyLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  updateSpy();
+
+  // Hamburger menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+
+<script>lucide.createIcons();</script>
+
+<!-- CONTACT FORM HANDLER -->
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+  const formReset = document.getElementById('form-reset');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        contactForm.style.display = 'none';
+        formSuccess.classList.add('show');
+        contactForm.reset();
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please try again or email me directly.');
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please try again or email me directly.');
+    });
+  });
+
+  formReset.addEventListener('click', function() {
+    formSuccess.classList.remove('show');
+    contactForm.style.display = '';
+  });
+</script>
+</body>
+</html>
