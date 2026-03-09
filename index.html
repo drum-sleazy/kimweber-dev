@@ -107,6 +107,7 @@
     animation: fadeInUp 0.8s ease 0.3s both;
   }
   .btn-primary {
+    display: inline-block;
     background: var(--accent); color: white; padding: 14px 32px;
     border-radius: 100px; text-decoration: none; font-weight: 600;
     font-size: 0.95rem; transition: all 0.3s; border: 2px solid var(--accent);
@@ -116,6 +117,7 @@
     transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45, 90, 61, 0.2);
   }
   .btn-secondary {
+    display: inline-block;
     background: transparent; color: var(--accent); padding: 14px 32px;
     border-radius: 100px; text-decoration: none; font-weight: 600;
     font-size: 0.95rem; border: 2px solid var(--accent); transition: all 0.3s;
@@ -331,6 +333,22 @@
   .work-card.reveal.visible {
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
+.btn-primary.reveal.visible,
+.btn-secondary.reveal.visible {
+  transition: all 0.3s;
+}
+.btn-primary.reveal.visible:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(45, 90, 61, 0.2);
+}
+.btn-secondary.reveal.visible:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(45, 90, 61, 0.2);
+}
 
   /* ---- RESPONSIVE ---- */
   @media (max-width: 900px) {
