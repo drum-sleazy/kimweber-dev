@@ -757,4 +757,17 @@
         contactForm.reset();
       } else {
         btn.disabled = false; btn.textContent = 'Send Message';
-        alert('Something went wrong. Please try again or email me directly.'
+        alert('Something went wrong. Please try again or email me directly.');
+      }
+    }).catch(function() {
+      btn.disabled = false; btn.textContent = 'Send Message';
+      alert('Something went wrong. Please try again or email me directly.');
+    });
+  });
+  formReset.addEventListener('click', function() {
+    formSuccess.classList.remove('show');
+    contactForm.style.display = '';
+  });
+</script>
+</body>
+</html>
